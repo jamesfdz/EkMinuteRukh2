@@ -1,13 +1,8 @@
-package com.codingwithjames.ekminuterukh;
+package com.codingwithjames.ekminuteruk;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import java.net.HttpURLConnection;
 
 /**
  * Created by James on 12/31/2018.

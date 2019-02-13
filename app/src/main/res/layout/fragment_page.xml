@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.codingwithjames.ekminuterukh.PageFragment">
+    tools:context="com.codingwithjames.ekminuteruk.PageFragment">
 
     <ProgressBar
         android:id="@+id/progressBar"

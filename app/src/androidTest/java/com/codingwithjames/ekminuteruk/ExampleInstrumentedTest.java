@@ -1,4 +1,4 @@
-package com.codingwithjames.ekminuterukh;
+package com.codingwithjames.ekminuteruk;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

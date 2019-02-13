@@ -1,4 +1,4 @@
-package com.codingwithjames.ekminuterukh;
+package com.codingwithjames.ekminuteruk;
 
 import org.junit.Test;
 
