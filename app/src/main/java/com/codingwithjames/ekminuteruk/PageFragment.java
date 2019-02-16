@@ -57,8 +57,6 @@ public class PageFragment extends Fragment {
         mQuoteCard = view.findViewById(R.id.quoteCard);
         mSwipeLeft = view.findViewById(R.id.swipeLeft);
 
-        MobileAds.initialize(getActivity().getApplicationContext(), "ca-app-pub-5397309444919460~6110496443");
-
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("CCFA8FF0F89AD93CC8A593BAE17AF056")
@@ -72,7 +70,7 @@ public class PageFragment extends Fragment {
             if(isNetworkAvailable()){
                 new JsonTask().execute();
             }else{
-                mProgressBar.setVisibility(View.GONE);
+                mProgressBar.setVisibility(View.INVISIBLE);
                 mQuoteCard.setVisibility(View.VISIBLE);
                 mQuotes.setText(R.string.no_internet);
                 mAuthor.setText(R.string.no_internet_author);
@@ -96,7 +94,7 @@ public class PageFragment extends Fragment {
         }
     }
 
-    private class JsonTask extends AsyncTask<Void, Void, JSONObject> {
+    public class JsonTask extends AsyncTask<Void, Void, JSONObject> {
 
         @Override
         protected void onPreExecute() {
@@ -148,7 +146,7 @@ public class PageFragment extends Fragment {
         @Override
         protected void onPostExecute(JSONObject response) {
             super.onPostExecute(response);
-            mProgressBar.setVisibility(View.GONE);
+            mProgressBar.setVisibility(View.INVISIBLE);
             mSwipeLeft.setVisibility(View.VISIBLE);
             if(response != null)
             {
