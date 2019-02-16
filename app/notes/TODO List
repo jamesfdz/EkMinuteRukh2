@@ -1,0 +1,10 @@
+TODO: 1. Date change listener -> broadcast receiver to listen when the date changes
+
+TODO: 2. to make this broadcast receiver -> need to create foreground service
+
+TODO: 3. Once date is changes, a random time is created and notification with Sharing option is triggered on that particular time of the day
+
+TODO: Testing: 1. create normal notification and check how it is shown with the quote
+TODO: Testing: 2. create another foreground service with another broadcast receiver and check if that is working when app is not in background.
+
+TODO: Add Sharing option of social media such as Insta, Whatsapp story
