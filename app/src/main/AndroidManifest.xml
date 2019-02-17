@@ -12,10 +12,15 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".services.ForegroundService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <receiver
             android:name=".broadcast_receivers.DateChange_BR"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

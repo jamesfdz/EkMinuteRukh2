@@ -1,8 +1,12 @@
 package com.codingwithjames.ekminuteruk.activity;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,6 +15,7 @@ import android.widget.Toast;
 import com.codingwithjames.ekminuteruk.adapters.Page_Adapter;
 import com.codingwithjames.ekminuteruk.R;
 import com.codingwithjames.ekminuteruk.broadcast_receivers.DateChange_BR;
+import com.codingwithjames.ekminuteruk.services.ForegroundService;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -21,6 +26,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "MAIN_CH_ID";
     private ViewPager mViewPager;
     private Page_Adapter adapter;
     private InterstitialAd mInterstitialAd;
@@ -33,15 +39,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //initializing Admobs
         MobileAds.initialize(this, "ca-app-pub-5397309444919460~6110496443");
 
+        //casting all views
         mViewPager = findViewById(R.id.viewPager);
         adapter = new Page_Adapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(0);
 
-        Date currentTime = Calendar.getInstance().getTime();
-
+        //creating Interstitial admob
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
@@ -54,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //setting page change listener to load Interstitial admob
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -83,29 +91,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        IntentFilter broadCastIntentFilter = new IntentFilter();
-        broadCastIntentFilter.addAction(Intent.ACTION_DATE_CHANGED);
-        broadCastIntentFilter.addAction(Intent.ACTION_SCREEN_ON);
-        broadCastIntentFilter.setPriority(100);
-
-        mDateChangeReceiver = new DateChange_BR();
-
-        registerReceiver(mDateChangeReceiver, broadCastIntentFilter);
-
-        Log.d(TAG, "onCreate: DateChangeReceiver is registered");
-        Toast.makeText(this, TAG + " onCreate: DateChangeReceiver is registered", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Intent foregroundServiceIntent = new Intent(this, ForegroundService.class);
 
-        // Unregister screenOnOffReceiver when destroy.
-        if (mDateChangeReceiver != null) {
-            unregisterReceiver(mDateChangeReceiver);
-            Log.d(TAG, "onDestroy: screenOnOffReceiver is unregistered.");
-            Toast.makeText(this, TAG + " onDestroy: screenOnOffReceiver is unregistered.", Toast.LENGTH_SHORT).show();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(foregroundServiceIntent);
+        } else {
+            startService(foregroundServiceIntent);
         }
     }
 }
