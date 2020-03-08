@@ -39,7 +39,6 @@ public class PageFragment extends Fragment {
     ConstraintLayout mParentLayout;
     ProgressBar mProgressBar;
     CardView mQuoteCard;
-    private AdView mAdView;
 
 
     public PageFragment() {
@@ -57,12 +56,6 @@ public class PageFragment extends Fragment {
         mProgressBar = view.findViewById(R.id.progressBar);
         mQuoteCard = view.findViewById(R.id.quoteCard);
         mSwipeLeft = view.findViewById(R.id.swipeLeft);
-
-        mAdView = view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("CCFA8FF0F89AD93CC8A593BAE17AF056")
-                .build();
-        mAdView.loadAd(adRequest);
 
         mQuoteCard.setVisibility(View.GONE);
         mSwipeLeft.setVisibility(View.INVISIBLE);

@@ -3,6 +3,6 @@
     <string name="no_internet">Early to bed, and early to rise proves that.....the person
         has no internet connection</string>
     <string name="no_internet_author">James Fernandes</string>
-    <string name="swipe_left_for_more_quotes"><![CDATA[swipe left for more quotes >>]]></string>
+    <string name="swipe_left_for_more_quotes"><![CDATA[<< swipe for more quotes >>]]></string>
     <string name="todo">TODO</string>
 </resources>
