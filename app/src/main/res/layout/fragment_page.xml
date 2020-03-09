@@ -36,6 +36,7 @@
         app:cardElevation="10dp">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/quoteTexts"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
