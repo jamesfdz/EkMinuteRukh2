@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.codingwithjames.ekminuterukquotes.adapters.Page_Adapter;
 import com.codingwithjames.ekminuterukquotes.R;
-import com.codingwithjames.ekminuterukquotes.services.ForegroundService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,17 +27,5 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(0);
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Intent foregroundServiceIntent = new Intent(this, ForegroundService.class);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(foregroundServiceIntent);
-        } else {
-            startService(foregroundServiceIntent);
-        }
     }
 }

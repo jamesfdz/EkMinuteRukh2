@@ -12,24 +12,11 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name="com.codingwithjames.ekminuterukquotes.services.ForegroundService"
-            android:enabled="true"
-            android:exported="true"></service>
-
-        <receiver
-            android:name="com.codingwithjames.ekminuterukquotes.broadcast_receivers.DateChange_BR"
-            android:enabled="true"
-            android:exported="true" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5397309444919460~6110496443" />
 
         <activity
             android:name="com.codingwithjames.ekminuterukquotes.activity.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="unspecified">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
